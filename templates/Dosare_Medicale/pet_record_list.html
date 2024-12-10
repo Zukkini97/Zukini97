@@ -1,0 +1,46 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+
+<style>
+    .list-group-item:hover {
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container mt-5">
+    <h1>Toate Dosarele Medicale</h1>
+
+    {% if pet_records %}
+        <table class="table table-hover mt-4">
+            <thead class="table-light">
+                <tr>
+                    <th>Nume Animal</th>
+                    <th>Specie Animal</th>
+                    <th>Acțiune</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in pet_records %}
+                    <tr>
+                        <td>{{ record.pet_name }}</td>
+                        <td>{{ record.pet_species }}</td>
+                        <td>
+                            <a href="{% url 'form_success' record.pk %}" class="btn btn-sm btn-primary">Vizualizare</a>
+                            <a href="{% url 'modifica' record.pk %}" class=" btn btn-sm btn-primary">Modifica</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nu există dosare medicale salvate.</p>
+    {% endif %}
+
+    <div class="mt-3 d-flex justify-content-start gap-2">
+        <a href="{% url 'dosare_medicale' %}" class="btn btn-primary">Formular Nou</a>
+    </div>
+</div>
+
+{% endblock %}

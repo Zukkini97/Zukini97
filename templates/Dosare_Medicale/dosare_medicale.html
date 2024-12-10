@@ -1,0 +1,44 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Dosare Medicale</h1>
+
+    {% if form.errors %}
+    <div class="error">
+        {{ form.errors }}
+    </div>
+    {% endif %}
+
+    <!-- {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+    {% endif %} -->
+
+    <!-- Card pentru formular -->
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-header">
+            <h4>Completează formularul medical</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" action="{% url 'dosare_medicale' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Salvează</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Afișează dosarele medicale salvate
+    <h2 class="mt-5">Dosarele existente:</h2>
+    <ul>
+        {% for record in pet_records %}
+            <li>{{ record }}</li>
+        {% empty %}
+            <li>Nu există dosare medicale salvate.</li>
+        {% endfor %}
+    </ul> -->
+</div>
+
+{% endblock %}

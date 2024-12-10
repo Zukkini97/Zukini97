@@ -1,0 +1,120 @@
+{% load widget_tweaks %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PetMedRegistry</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <section>
+            <div class="login-box">
+                <form method="post" action="{% url 'signin_user' %}">
+                    {% csrf_token %}
+                    <h2>Inregistrare</h2>
+                    <!-- Campul de Email -->
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        
+                        <!-- Câmpul pentru email cu validare -->
+                        <input type="email" name="email" 
+                            class="{% if form.email.errors %}form-control is-invalid{% else %}form-control{% endif %}"
+                            placeholder="" 
+                            value="{{ form.email.value|default:'' }}" id="email">
+                        
+                        <label>Email*</label>
+                        
+                        <!-- Erorile pentru email -->
+                        {% if form.email.errors %}
+                            <div class="error-message" id="email-error">
+                                {% for error in form.email.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        
+                        <!-- Câmpul pentru parola cu validare -->
+                        <input type="password" name="password1" 
+                            class="{% if form.password1.errors %}form-control is-invalid{% else %}form-control{% endif %}"
+                            placeholder="" 
+                            value="{{ form.password1.value|default:'' }}" id="password1">
+                    
+                        <label>Parola*</label>
+                        
+                        <!-- Erorile pentru parola -->
+                        {% if form.password1.errors %}
+                            <div class="error-message" id="password1-error">
+                                {% for error in form.password1.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        
+                        <!-- Câmpul pentru confirmarea parolei cu validare -->
+                        <input type="password" name="password2" 
+                            class="{% if form.password2.errors %}form-control is-invalid{% else %}form-control{% endif %}"
+                            placeholder="" 
+                            value="{{ form.password2.value|default:'' }}" id="password2">
+                    
+                        <label>Confirmă Parola*</label>
+                        
+                        <!-- Erorile pentru confirmarea parolei -->
+                        {% if form.password2.errors %}
+                            <div class="error-message" id="password2-error">
+                                {% for error in form.password2.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Butonul de Login -->
+                    <button>Inregistrare</button>
+                    <!-- Link pentru înregistrare -->
+                    <div class="register-link">
+                        <p>Ai un cont? <a href="{% url 'user_login' %}">Autentifica-te</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script>
+            // Ascunde mesajele de eroare atunci când utilizatorul începe să editeze câmpul
+            document.getElementById('email').addEventListener('focus', function() {
+                var errorElement = document.getElementById('email-error');
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+            });
+        
+            document.getElementById('password1').addEventListener('focus', function() {
+                var errorElement = document.getElementById('password1-error');
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+            });
+        
+            document.getElementById('password2').addEventListener('focus', function() {
+                var errorElement = document.getElementById('password2-error');
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+            });
+        </script>
+        
+    </body>
+</html>

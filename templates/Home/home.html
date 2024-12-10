@@ -1,0 +1,13 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card text-center" style="width: 24rem;">
+        <div class="card-body">
+            <h5 class="card-title text-danger">Acces Restricționat</h5>
+            <p class="card-text">Trebuie să fii autentificat pentru a accesa acest site.</p>
+            <a href="{% url 'user_login' %}" class="btn btn-primary">Autentifică-te</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

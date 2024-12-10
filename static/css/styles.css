@@ -1,0 +1,191 @@
+html, body {
+    height: 100%; /* Permite paginii să folosească toată înălțimea */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evită scroll pe axa orizontală */
+}
+
+.container {
+    padding-bottom: 50px; /* Adaugă spațiu jos pentru vizibilitatea butoanelor */
+}
+
+.card {
+    margin-bottom: 20px; /* Adaugă spațiu între formular și alte elemente */
+}
+
+
+.footer {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 10px;
+     
+    bottom: 0; 
+    width: 100%; 
+}
+
+
+#logout-btn {
+    background-color: transparent;  /* Fără fundal */
+    border: none;  /* Fără bordură */
+    color: #007bff;  /* Culoare text: un albastru clar */
+    font-size: 16px;  /* Dimensiunea fontului */
+    cursor: pointer;  /* Punctul de selecție devine o mână când treci cu mouse-ul */
+}
+
+#logout-btn:hover {
+    text-decoration: underline;  /* Subliniere când treci cu mouse-ul */
+    color: #0056b3;  /* Schimbă culoarea la hover */
+}
+
+
+/* Aici incepe codul css pentru test */
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url('../images/pets.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-box {
+    position: relative;
+    width: 400px;
+    min-height: 450px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+}
+
+h2 {
+    font-size: 2em;
+    color: #ffffff;
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    width: 310px;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #ffffff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:not(:placeholder-shown)~label {
+    top: -5px;
+    font-size: .8em;
+}
+
+.input-box input.is-valid {
+    border: 2px solid #e74c3c;
+    background-color: #fdecea;
+}
+.input-box input.is-invalid::placeholder {
+    color: #e74c3c;
+    font-style: italic;
+}
+
+.input-box input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 50px 0 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    line-height: 57px;
+}
+
+.remember-forgot {
+    margin: -15px 0 15px;
+    font-size: .9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input {
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+}
+
+.register-link {
+    font-size: .9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.register-link p a {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    font-size: .8em;
+    margin-top: 0px;
+    /* display: block; */
+    background-color: #f8d7da;  /* Fundal roșu deschis pentru evidențiere */
+    padding: 1px;
+    border: 1px solid red; 
+    border-radius: 4px;
+}

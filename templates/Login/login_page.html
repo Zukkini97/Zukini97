@@ -1,0 +1,96 @@
+{% load widget_tweaks %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PetMedRegistry</title>
+
+        <!-- Fonturi și CSS -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <section>
+            <div class="login-box">
+                <!-- Formular de autentificare -->
+                <form method="post" action="{% url 'user_login' %}">
+                    {% csrf_token %}
+                    <h2>Autentificare</h2>
+
+                    <!-- Câmp Email -->
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" name="username"
+                               class="{% if form.username.errors %} form-control is-invalid {% else %} form-control {% endif %}"
+                               placeholder=""
+                               value="{{ form.username.value|default:'' }}" id="email">
+                        <label>Email</label>
+                        {% if form.username.errors %}
+                            <div class="error-message" id="emai-error">
+                                {% for error in form.username.errors %}
+                                    <p>{{error}}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Câmp Password -->
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" name="password"
+                                class="{% if form.password.errors %} form-control is-invalid {% else %} form-control {% endif %}"
+                                placeholder="" id="password">
+                        <label>Parola</label>
+                        {% if form.password.errors %}
+                            <div class="error-message" id="password-error">
+                                {% for error in form.password.errors %}
+                                    <p>{{error}}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Checkbox Remember Me și link Recuperare parolă -->
+                    <div class="remember-forgot">
+                        <label>
+                            <input type="checkbox">Tine-ma minte</label>
+                        <a href="#">Ai uitat parola?</a>
+                    </div>
+
+                    <!-- Buton de submit -->
+                    <button type="submit" class="btn btn-primary w-100">Autentificare</button>
+
+                    <!-- Link către înregistrare -->
+                    <div class="register-link">
+                        <p>Nu ai un cont? <a href="{% url 'signin_user' %}">  Inregistrare</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Scripturi pentru Ionicons -->
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script>
+            // Ascunde mesajele de eroare atunci când utilizatorul începe să editeze câmpul pentru email
+            document.getElementById('email').addEventListener('focus', function() {
+                var errorElement = document.getElementById('email-error');
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+            });
+        
+            // Ascunde mesajele de eroare atunci când utilizatorul începe să editeze câmpul pentru parolă
+            document.getElementById('password').addEventListener('focus', function() {
+                var errorElement = document.getElementById('password-error');
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+            });
+        </script>
+        
+    </body>
+</html>

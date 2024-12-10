@@ -1,0 +1,18 @@
+{% extends 'Home/base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-5">
+    <div class="card shadow-sm p-4 text-center" style="max-width: 600px; margin: auto;">
+        <img src="{% static 'images/logo.png' %}" alt="Puppy and Kitten" class="mb-3" style="width: 80px;">
+        <h1 class="mb-3">Despre Noi</h1>
+        <p class="text-muted">
+            PetMedRegistry este o platformă inovatoare destinată gestionării dosarelor medicale pentru animale.
+            Ne propunem să simplificăm accesul la istoricul medical al animalelor, permițând clinicilor veterinare 
+            și farmaciilor să gestioneze fișele pacienților cu ușurință, atât online, cât și offline.
+            Cu PetMedRegistry, proprietarii de animale își pot accesa istoricul medical oriunde și oricând.
+        </p>
+    </div>
+</div>
+
+{% endblock %}

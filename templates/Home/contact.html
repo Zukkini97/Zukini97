@@ -1,0 +1,28 @@
+{% extends 'Home/base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <!-- Cardul -->
+    <div class="card shadow-sm p-4" style="max-width: 600px; margin: auto;">
+        <div class="card-header">
+            <h4>Contact</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Cum te putem ajuta?</h5>
+            <p class="card-text">Dacă ai întrebări sau nelămuriri, nu ezita să ne contactezi. Vom răspunde cât mai curând posibil.</p>
+            <form>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Introdu adresa ta de email">
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Mesaj</label>
+                    <textarea class="form-control" id="message" rows="3" placeholder="Scrie mesajul tău"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Trimite</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

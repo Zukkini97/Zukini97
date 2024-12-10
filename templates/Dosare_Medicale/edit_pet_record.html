@@ -1,0 +1,80 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+{% load widget_tweaks %}
+<div class="container mt-5">
+    <h1 class="text-center">Modifică Fișa Medicală</h1>
+
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-header text-center">
+            <h4>Formular de Editare</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="pet_name" class="form-label"><strong>Nume Animal</strong></label>
+                    {{ form.pet_name|add_class:"form-control" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="pet_species" class="form-label"><strong>Specie</strong></label>
+                    {{ form.pet_species|add_class:"form-control" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="pet_breed" class="form-label"><strong>Rasă</strong></label>
+                    {{ form.pet_breed|add_class:"form-control" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="pet_weight" class="form-label"><strong>Greutate (kg)</strong></label>
+                    {{ form.pet_weight|add_class:"form-control" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="pet_color_and_markings" class="form-label"><strong>Culoare</strong></label>
+                    {{ form.pet_color_and_markings|add_class:"form-control" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="pet_gender" class="form-label"><strong>Gen</strong></label>
+                    {{ form.pet_gender|add_class:"form-select" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="pet_vaccine" class="form-label"><strong>Vaccinuri</strong></label>
+                    {{ form.pet_vaccine|add_class:"form-control" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="pet_reproductive_status" class="form-label"><strong>Status Reproductiv</strong></label>
+                    {{ form.pet_reproductive_status|add_class:"form-select" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="pet_disease" class="form-label"><strong>Boli</strong></label>
+                    {{ form.pet_disease|add_class:"form-control" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="pet_treatments" class="form-label"><strong>Tratamente</strong></label>
+                    {{ form.pet_treatments|add_class:"form-control" }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="pet_medication" class="form-label"><strong>Medicație</strong></label>
+                    {{ form.pet_medication|add_class:"form-control" }}
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Salvează Modificările</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3 text-center">
+        <a href="{% url 'pet_record_list' %}" class="btn btn-secondary">Înapoi</a>
+    </div>
+</div>
+{% endblock %}
