@@ -2,7 +2,13 @@ html, body {
     height: 100%; /* Permite paginii să folosească toată înălțimea */
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
     overflow-x: hidden; /* Evită scroll pe axa orizontală */
+}
+
+.main-content{
+    flex: 1;
 }
 
 .container {
@@ -18,7 +24,7 @@ html, body {
     background-color: #F1F1F1;
     text-align: center;
     padding: 10px;
-     
+    
     bottom: 0; 
     width: 100%; 
 }
@@ -188,4 +194,7 @@ button {
     padding: 1px;
     border: 1px solid red; 
     border-radius: 4px;
+}
+#id_remember_me {
+    margin-right: 1px;
 }

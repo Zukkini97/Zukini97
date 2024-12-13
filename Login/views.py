@@ -18,12 +18,20 @@ class UserLoginView(LoginView):
         # Autentificăm utilizatorul folosind funcția authenticate() și login()
         email = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
-
         user = authenticate(username=email, password=password)
+        remember_me = form.cleaned_data.get('remember_me')
+
         if user is not None:
             login(self.request, user)  # Autentificăm utilizatorul
+            
+            if remember_me:
+                self.request.session.set_expiry(1209600) # Data de expirare dupa doua saptamani
+            else:
+                self.request.session.set_expiry(0)
+            
             messages.success(self.request, 'Te-ai conectat cu succes!')
             return redirect(self.get_success_url())  # Redirecționăm utilizatorul
+        
         else:
             messages.error(self.request, 'Adresa de email sau parola sunt incorecte!')
             return self.form_invalid(form)  # Dacă autentificarea nu a reușit, afișăm formularul invalid

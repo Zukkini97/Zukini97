@@ -19,6 +19,8 @@ class CustomAuthenticationForm(AuthenticationForm):
         }    
     )
 
+    remember_me = forms.BooleanField(required=False, label='Tine-ma minte')
+
     # def clean_email(self):
     #     email = self.cleaned_data.get('email')
     #     if User.objects.filter(email=email.exists()):
