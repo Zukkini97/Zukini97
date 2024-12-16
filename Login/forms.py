@@ -26,4 +26,4 @@ class CustomAuthenticationForm(AuthenticationForm):
     #     if User.objects.filter(email=email.exists()):
     #         raise ValueError('Adresa este deja folosita')
     #     return email
-
+    
