@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('Login.urls')),
     path('', include('Signin.urls')),
     path('', include('Search.urls')),
+    path('reset-password/', include('ResetPassword.urls')),
 ]
