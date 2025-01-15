@@ -18,7 +18,7 @@
                 <!-- Formular de autentificare -->
                 <form method="post" action="{% url 'user_login' %}">
                     {% csrf_token %}
-                    <h2>Autentificare</h2>
+                    <h2 class="text-center">Autentificare</h2>
 
                     <!-- Câmp Email -->
                     <div class="input-box">
@@ -29,7 +29,7 @@
                                value="{{ form.username.value|default:'' }}" id="email">
                         <label>Email</label>
                         {% if form.username.errors %}
-                            <div class="error-message" id="emai-error">
+                            <div class="error-message" id="email-error">
                                 {% for error in form.username.errors %}
                                     <p>{{error}}</p>
                                 {% endfor %}
