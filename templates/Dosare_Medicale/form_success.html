@@ -9,7 +9,6 @@
             <h4>Detalii Formular</h4>
         </div>
         <div class="card-body">
-            
             <p><strong>Nume animal:</strong> {{ petrecord.pet_name }}</p>
             <p><strong>Specie:</strong> {{ petrecord.pet_species }}</p>
             <p><strong>Rasă:</strong> {{ petrecord.pet_breed }}</p>
@@ -21,26 +20,39 @@
             <p><strong>Boli:</strong> {{ petrecord.pet_disease }}</p>
             <p><strong>Tratamente:</strong> {{ petrecord.pet_treatments }}</p>
             <p><strong>Medicație:</strong> {{ petrecord.pet_medication }}</p>
-            
         </div>
     </div>
 
-    <!-- <div class="mt-5">
-        <h2>Toate Dosarele Medicale</h2>
-        <ul>
-            {% for record in pet_records %}
-                <li><strong>{{ record.pet_name }}</strong> - {{ record.pet_species }} - {{ record.pet_breed }} </li>
-            {% empty %}
-                <li>Nu există dosare medicale salvate.</li>
-            {% endfor %}
-        </ul>
-    </div> -->
-
     <div class="mt-3">
         <a href="{% url 'pet_record_list' %}" class="btn btn-primary">Înapoi</a>
-        <a href="{% url 'modifica' petrecord.pk %}" class=" btn btn-primary">Modifica</a>
-        <a href="{% url 'delete' petrecord.pk %}" class="btn btn-danger">Șterge</a>
+        <a href="{% url 'modifica' petrecord.pk %}" class="btn btn-primary">Modifica</a>
+
+        <!-- Butonul care deschide modalul de confirmare -->
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Șterge</button>
     </div>
-    
 </div>
+
+<!-- Modalul de confirmare a ștergerii -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmați Ștergerea</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Sunteți sigur că doriți să ștergeți acest formular? Acțiunea nu poate fi anulată.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+        <!-- Formularul de ștergere -->
+        <form action="{% url 'delete' petrecord.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Șterge</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

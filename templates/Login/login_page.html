@@ -16,9 +16,10 @@
         <section>
             <div class="login-box">
                 <!-- Formular de autentificare -->
+                 {%block content%}
                 <form method="post" action="{% url 'user_login' %}">
                     {% csrf_token %}
-                    <h2 class="text-center">Autentificare</h2>
+                    <h2>Autentificare</h2>
 
                     <!-- Câmp Email -->
                     <div class="input-box">
@@ -36,7 +37,7 @@
                             </div>
                         {% endif %}
                     </div>
-
+                    {%endblock%}
                     <!-- Câmp Password -->
                     <div class="input-box">
                         <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>

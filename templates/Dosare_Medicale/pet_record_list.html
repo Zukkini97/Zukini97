@@ -1,5 +1,5 @@
 {% extends 'Home/base.html' %}
-
+{% load static %}
 {% block content %}
 
 <style>
@@ -7,9 +7,11 @@
         background-color: #f0f0f0;
         cursor: pointer;
     }
+
+    
 </style>
 
-<div class="container mt-5">
+<div class="container mt-5">    
     <h1>Toate Dosarele Medicale</h1>
 
     {% if pet_records %}
@@ -28,7 +30,7 @@
                         <td>{{ record.pet_species }}</td>
                         <td>
                             <a href="{% url 'form_success' record.pk %}" class="btn btn-sm btn-primary">Vizualizare</a>
-                            <a href="{% url 'modifica' record.pk %}" class=" btn btn-sm btn-primary">Modifica</a>
+                            <a href="{% url 'modifica' record.pk %}" class="btn btn-sm btn-primary">Modifica</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -43,4 +45,4 @@
     </div>
 </div>
 
-{% endblock %}
+{% endblock %}

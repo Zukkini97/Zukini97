@@ -43,5 +43,5 @@ class UserLoginView(LoginView):
     
 def logout_user(request):
     logout(request)
-    messages.success(request, 'Te-ai deconectat cu succes!')
+    # messages.success(request, 'Te-ai deconectat cu succes!')
     return redirect('user_login')
